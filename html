@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محفظة عدسة النجوم للتصوير الفوتوغرافي</title>
+    <!-- تحميل Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* تطبيق خط Inter (أو خط عربي مناسب) وخلفية داكنة */
+        body {
+            font-family: 'Inter', sans-serif; 
+            background-color: #0a0a0a;
+            color: #e5e7eb; /* نص رمادي فاتح للتباين */
+        }
+        /* أنماط مخصصة لشبكة المعرض المستجيبة للهاتف المحمول */
+        .gallery-grid {
+            display: grid;
+            gap: 1rem; /* 16px gap */
+            grid-template-columns: repeat(2, 1fr); /* عمودان على الهاتف المحمول */
+        }
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 أعمدة على سطح المكتب/التابلت */
+            }
+        }
+        /* نمط للنافذة المنبثقة للصور (Lightbox Modal) */
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content-container {
+            max-width: 90%;
+            max-height: 90vh;
+        }
+        .modal-img {
+            max-width: 100%;
+            max-height: 80vh; /* أقصى ارتفاع لترك مساحة للوصف */
+            object-fit: contain;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased" dir="rtl">
+
+    <!-- الرأس والتنقل (Header & Navigation) -->
+    <header class="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-sm shadow-xl p-4 md:p-6 border-b border-gray-800">
+        <div class="container mx-auto flex justify-between items-center max-w-7xl">
+            <a href="#" class="text-2xl font-extrabold tracking-widest text-cyan-400 hover:text-cyan-300 transition duration-300">
+                عدسة النجوم
+            </a>
+            <nav class="hidden md:flex space-x-8 rtl:space-x-reverse">
+                <a href="#gallery" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">المعرض</a>
+                <a href="#about" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">حول</a>
+                <a href="#contact" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">اتصل</a>
+            </nav>
+            <!-- زر قائمة الهاتف المحمول -->
+            <button class="md:hidden text-gray-300 hover:text-white transition duration-200 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="py-10 md:py-16">
+        <!-- قسم البطل (Hero Section) -->
+        <section class="text-center mb-16 px-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-500 leading-tight">
+                التقاط ما لا يُرى.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
+                مجموعة منسقة من اللحظات في الزمن، من المناظر الطبيعية الخلابة إلى المشاعر الحضرية الخام.
+            </p>
+        </section>
+
+        <!-- قسم المعرض (Gallery Section) -->
+        <section id="gallery" class="container mx-auto px-4 max-w-7xl mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-white">المحفظة</h2>
+
+            <div class="gallery-grid">
+                <!-- صورة 1: منظر طبيعي -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="إطلالة جبلية عند غروب الشمس - سلسلة الطبيعة">
+                    <!-- استخدم صور Placeholder يمكنك استبدالها لاحقاً بصورك الخاصة -->
+                    <img src="https://placehold.co/800x600/1e40af/ffffff?text=Mountain+Vista" alt="إطلالة جبلية عند غروب الشمس" loading="lazy" class="w-full h-auto object-cover aspect-[4/3] rounded-xl" />
+                </div>
+
+                <!-- صورة 2: صورة شخصية -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="صورة استوديو أحادية اللون - العنصر البشري">
+                    <img src="https://placehold.co/600x900/4c4c4c/ffffff?text=Studio+Portrait" alt="صورة استوديو أحادية اللون" loading="lazy" class="w-full h-auto object-cover aspect-[2/3] rounded-xl" />
+                </div>
+
+                <!-- صورة 3: عمارة -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-violet-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="هندسة حضرية وانعكاسات - منظر المدينة">
+                    <img src="https://placehold.co/800x800/6d28d9/ffffff?text=Urban+Geometry" alt="هندسة حضرية وانعكاسات" loading="lazy" class="w-full h-auto object-cover aspect-square rounded-xl" />
+                </div>
+
+                <!-- صورة 4: تجريدي/تفاصيل -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-red-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="لقطة ماكرو لمعدن مصدأ - سلسلة التفاصيل">
+                    <img src="https://placehold.co/800x600/a30000/ffffff?text=Macro+Detail" alt="لقطة ماكرو لمعدن مصدأ" loading="lazy" class="w-full h-auto object-cover aspect-[4/3] rounded-xl" />
+                </div>
+
+                <!-- صورة 5: الحياة البرية -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-green-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="صورة ظلية لنسر أثناء الطيران - الحياة البرية">
+                    <img src="https://placehold.co/600x900/15803d/ffffff?text=Wildlife+Silhouette" alt="صورة ظلية لنسر أثناء الطيران" loading="lazy" class="w-full h-auto object-cover aspect-[2/3] rounded-xl" />
+                </div>
+
+                <!-- صورة 6: تصوير الشارع -->
+                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-amber-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="مشهد شارع مدينة ممطر - لحظات عفوية">
+                    <img src="https://placehold.co/800x800/ca8a04/ffffff?text=Street+Scene" alt="مشهد شارع مدينة ممطر" loading="lazy" class="w-full h-auto object-cover aspect-square rounded-xl" />
+                </div>
+                
+                <!-- يمكن إضافة المزيد من العناصر حسب الحاجة -->
+
+            </div>
+        </section>
+
+        <!-- قسم حول (About Section) -->
+        <section id="about" class="container mx-auto px-4 max-w-4xl py-16">
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">ما وراء العدسة</h2>
+            <div class="bg-gray-900 p-8 rounded-2xl shadow-inner shadow-gray-700/50 space-y-4">
+                <p class="text-lg text-gray-300">
+                    مرحباً! أنا **أحمد المصور**، وأعتقد أن التصوير الفوتوغرافي هو فن الملاحظة. لقد كنت أصقل مهنتي لأكثر من عشر سنوات، متخصصاً في **تصوير المناظر الطبيعية** و **الصور الشخصية بالأبيض والأسود**.
+                </p>
+                <p class="text-lg text-gray-300">
+                    عملي مدفوع بالرغبة في تجميد اللحظات العابرة ومشاركة الجمال في العالم. مقري في **الرياض**، وأسافر على نطاق واسع بحثاً عن الإلهام. جميع المطبوعات متاحة للشراء—يرجى مراجعة قسم الاتصال للاستفسارات.
+                </p>
+                <div class="text-center pt-4">
+                    <a href="#contact" class="inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-700 transition duration-300 shadow-lg shadow-cyan-500/50">
+                        تواصل معي
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الاتصال (Contact Section) -->
+        <section id="contact" class="container mx-auto px-4 max-w-4xl py-16">
+            <h2 class="text-3xl font-bold mb-6 text-center text-white">اتصل والمطبوعات</h2>
+            <form class="bg-gray-900 p-8 rounded-2xl shadow-2xl shadow-indigo-500/30 space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-400 mb-1">الاسم</label>
+                    <!-- text-right يضمن محاذاة النص لليمين -->
+                    <input type="text" id="name" name="name" placeholder="اسمك" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-right" dir="auto">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-400 mb-1">البريد الإلكتروني</label>
+                    <!-- dir="ltr" مفيد لإدخال البريد الإلكتروني بالإنجليزية -->
+                    <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-left" dir="ltr">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-400 mb-1">الرسالة / استفسار عن طباعة</label>
+                    <textarea id="message" name="message" rows="4" placeholder="أنا مهتم بطباعة لمنظر غروب الشمس الجبلي..." class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-right" dir="auto"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition duration-300 shadow-xl shadow-indigo-500/50 transform hover:translate-y-[-2px]">
+                    أرسل الرسالة
+                </button>
+                <p id="contact-message" class="text-center text-green-400 hidden mt-4">شكراً لك على رسالتك! سأتواصل معك قريباً.</p>
+            </form>
+        </section>
+    </main>
+
+    <!-- التذييل (Footer) -->
+    <footer class="bg-gray-900 mt-16 py-8 border-t border-gray-800">
+        <div class="container mx-auto max-w-7xl px-4 text-center">
+            <p class="text-gray-500">&copy; 2025 عدسة النجوم للتصوير الفوتوغرافي. جميع الحقوق محفوظة.</p>
+            <div class="flex justify-center space-x-6 rtl:space-x-reverse mt-4">
+                <!-- أيقونات التواصل الاجتماعي -->
+                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">إنستغرام</a>
+                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">فيسبوك</a>
+                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">تويتر</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- النافذة المنبثقة للصور (Lightbox Modal) -->
+    <div id="lightbox-modal" class="modal fixed inset-0 bg-black bg-opacity-95 z-50 flex justify-center items-center hidden" onclick="closeModal(event)">
+        <div class="modal-content-container relative p-4" onclick="event.stopPropagation()">
+            <!-- زر الإغلاق على اليسار ليتناسب مع RTL -->
+            <button id="close-modal" class="absolute top-4 left-4 text-white text-3xl font-bold p-2 leading-none rounded-full bg-gray-800 hover:bg-gray-700 transition duration-200 focus:outline-none" aria-label="Close Modal">
+                &times;
+            </button>
+            <img id="lightbox-image" class="modal-img rounded-xl shadow-2xl" src="" alt="">
+            <p id="lightbox-caption" class="text-center text-lg mt-4 px-4 py-2 bg-gray-900 rounded-lg text-gray-300"></p>
+        </div>
+    </div>
+
+    <script>
+        // --- JavaScript for Lightbox and Form Handling ---
+
+        const modal = document.getElementById('lightbox-modal');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeModalButton = document.getElementById('close-modal');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        // Function to open the modal/lightbox
+        function openModal(imageSrc, captionText) {
+            lightboxImage.src = imageSrc;
+            lightboxImage.alt = captionText;
+            lightboxCaption.textContent = captionText;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling the body when modal is open
+        }
+
+        // Function to close the modal/lightbox
+        function closeModal(event) {
+            // Check if the click was on the modal background or the close button
+            if (event.target === modal || event.target === closeModalButton) {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore body scrolling
+            }
+        }
+
+        // Attach click listeners to all gallery items
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const src = img.src;
+                const caption = item.getAttribute('data-caption');
+                openModal(src, caption);
+            });
+        });
+
+        // Event listener for the close button
+        closeModalButton.addEventListener('click', (event) => {
+            closeModal(event);
+        });
+
+        // Event listener for closing modal with ESC key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+                // Manually trigger the close function as if the close button was clicked
+                closeModal({ target: closeModalButton });
+            }
+        });
+
+
+        // Basic form submission handler (prevents page refresh)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageElement = document.getElementById('contact-message');
+
+            // Simple validation check
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                // In a real application, you would send this data to a server here.
+                console.log('Form Submitted:', { name, email, message });
+
+                // Display success message
+                messageElement.textContent = "شكراً لك على رسالتك! سأتواصل معك قريباً.";
+                messageElement.classList.remove('hidden');
+                messageElement.classList.remove('text-red-400');
+                messageElement.classList.add('text-green-400');
+                
+                // Clear form after a short delay
+                setTimeout(() => {
+                    e.target.reset();
+                    messageElement.classList.add('hidden');
+                }, 3000);
+
+            } else {
+                 messageElement.textContent = "يرجى ملء جميع الحقول.";
+                 messageElement.classList.remove('hidden');
+                 messageElement.classList.remove('text-green-400');
+                 messageElement.classList.add('text-red-400');
+            }
+        });
+    </script>
+</body>
+</html>
+
+  
