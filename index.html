@@ -3,290 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Online Academy - معهد رائد لتعليم اللغة الإنجليزية والترجمة والرخصة الدولية (ICDL). انضم الآن لمستقبل أفضل.">
-    <meta name="keywords" content="تعليم, لغة إنجليزية, ترجمة, ICDL, دورات, معهد, Online Academy">
-    <title>الرئيسية - Online Academy | اللغة الإنجليزية والترجمة</title>
-
-    <link href="./assets/css/style.css" rel="stylesheet"> 
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
+    <title>Online Academy - أونلاين أكاديمي</title>
+    <!-- تحميل مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- تحميل مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJz9At7RL0kKAGkI3m4X6Z/J8J69h7uF36xT+p9n0G6h2B4Q30H8V71r0S6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        body { font-family: 'Tajawal', sans-serif; }
-        .gold-bg { background-color: #FFD700; }
-        .gold-text { color: #FFD700; }
-        .soft-gray-bg { background-color: #F5F5F5; }
-        /* لتأثير كلاسيكي مودرن */
-        .shadow-gold { box-shadow: 0 4px 6px -1px rgba(255, 215, 0, 0.1), 0 2px 4px -1px rgba(255, 215, 0, 0.06); }
+        /* تعريف الألوان الأساسية للمشروع بناءً على الصور المرفقة */
+        :root {
+            --primary-color: #0087b3; /* لون أزرق فيروزي قوي */
+            --secondary-color: #12b0d9; /* لون أزرق أفتح قليلاً */
+            --background-color: #f7fbfc; /* خلفية بيضاء مائلة للزرقة الهادئة */
+            --accent-color: #ffc107; /* لون أصفر للنجوم والتركيز */
+        }
+        .bg-primary { background-color: var(--primary-color); }
+        .text-primary { color: var(--primary-color); }
+        .bg-secondary { background-color: var(--secondary-color); }
+        .border-primary { border-color: var(--primary-color); }
+        
+        body {
+            font-family: 'Inter', sans-serif; /* خط أنيق وحديث */
+            background-color: var(--background-color);
+        }
+        
+        /* تأثير التمرير (Hover) الأنيق للأزرار */
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 135, 179, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 135, 179, 0.6);
+            background-color: #006b8c; /* أغمق قليلاً عند التمرير */
+        }
+
+        /* تصميم قسم الدورات لإظهارها بشكل أنيق ومتناسق */
+        .course-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <div class="soft-gray-bg hidden md:flex justify-between items-center py-2 px-6 text-sm">
-        <div class="flex items-center space-x-4 space-x-reverse">
-            <span class="gold-text font-bold">اتصل بنا: </span>
-            <span>📞 +966 50 123 4567</span>
-        </div>
-        <div>
-            <a href="#" class="text-gray-600 hover:gold-text transition duration-300 ml-3">English</a> | 
-            <a href="#" class="gold-text font-bold mr-3">العربية</a>
-        </div>
-    </div>
+    <!-- شريط التنقل (Navigation Bar) -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- الشعار (Logo) -->
+            <a href="#home" class="flex items-center space-x-2">
+                <!-- شعار مؤقت (يمكن استبداله بصورة الشعار المرفق) -->
+                <i class="fa-solid fa-graduation-cap text-primary text-3xl"></i>
+                <span class="text-2xl font-bold text-gray-900">أونلاين أكاديمي</span>
+            </a>
 
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <a href="index.html" class="text-2xl font-extrabold gold-text">Online Academy</a>
-            
-            <nav class="hidden md:flex space-x-6 space-x-reverse font-medium">
-                <a href="index.html" class="gold-text border-b-2 border-gold-text pb-1">الرئيسية</a>
-                <a href="about.html" class="hover:gold-text transition duration-300">عن المعهد</a>
-                <a href="courses.html" class="hover:gold-text transition duration-300">الدورات</a>
-                <a href="faculty.html" class="hover:gold-text transition duration-300">الأساتذة</a>
-                <a href="contact.html" class="hover:gold-text transition duration-300">التواصل</a>
-            </nav>
+            <!-- قائمة التنقل (Desktop) -->
+            <div class="hidden md:flex space-x-8 space-x-reverse text-lg font-medium">
+                <a href="#home" class="text-primary hover:text-secondary transition duration-150">الرئيسية</a>
+                <a href="#courses" class="hover:text-primary transition duration-150">الدورات</a>
+                <a href="#about" class="hover:text-primary transition duration-150">نبذة عنا</a>
+                <a href="#contact" class="hover:text-primary transition duration-150">تواصل</a>
+            </div>
 
-            <button id="open-register-modal" class="gold-bg hover:bg-yellow-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-gold transform hover:scale-105">
-                انضم الآن
-            </button>
-            
-            <button id="mobile-menu-button" class="md:hidden text-2xl gold-text">☰</button>
-        </div>
-        
-        <nav id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-md">
-            <a href="index.html" class="block py-2 px-4 hover:soft-gray-bg gold-text border-r-4 border-gold-text">الرئيسية</a>
-            <a href="about.html" class="block py-2 px-4 hover:soft-gray-bg">عن المعهد</a>
-            <a href="courses.html" class="block py-2 px-4 hover:soft-gray-bg">الدورات</a>
-            <a href="faculty.html" class="block py-2 px-4 hover:soft-gray-bg">الأساتذة</a>
-            <a href="contact.html" class="block py-2 px-4 hover:soft-gray-bg">التواصل</a>
+            <!-- زر الترجمة والمحمول -->
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <!-- زر الترجمة (Translation Button) -->
+                <button id="translateBtn" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-300 transition duration-150 flex items-center">
+                    <i class="fas fa-language ml-2"></i>
+                    ترجمة
+                </button>
+                
+                <!-- زر القائمة (Mobile Menu Button) -->
+                <button id="menuBtn" class="md:hidden text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </nav>
+        
+        <!-- قائمة التنقل (Mobile View) - مخفية افتراضياً -->
+        <div id="mobileMenu" class="md:hidden bg-white shadow-md transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+            <a href="#home" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">الرئيسية</a>
+            <a href="#courses" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">الدورات</a>
+            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">نبذة عنا</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-gray-100 border-t">تواصل</a>
+        </div>
     </header>
 
-    <section class="relative h-screen flex items-center bg-cover bg-center" 
-             style="background-image: url('./assets/images/hero-bg.jpg');">
-        <div class="absolute inset-0 bg-black opacity-60"></div>
-        
-        <div class="container mx-auto text-white text-center relative z-10 p-6">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 gold-text" 
-                data-aos="fade-up" data-aos-duration="1000">
-                مستقبلك يبدأ هنا!
-            </h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" 
-               data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                أكاديمية رائدة لتعليم اللغة الإنجليزية، الترجمة، والرخصة الدولية (ICDL). تعلم بذكاء، وحقق أحلامك.
+    <main>
+        <!-- 1. قسم الصفحة الرئيسية (Home Section) -->
+        <section id="home" class="bg-primary text-white py-20 md:py-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+                <!-- المحتوى النصي -->
+                <div class="md:w-1/2 text-center md:text-right mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                        طور مهاراتك في <span class="text-accent-color">اللغة الإنجليزية</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        دورات إنجليزية شاملة أونلاين: محادثة، قواعد، نطق، ترجمة، ورخصة قيادة الحاسوب.
+                    </p>
+                    <a href="#courses" class="btn-primary inline-block bg-accent-color text-gray-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-400">
+                        اكتشف الدورات الآن
+                    </a>
+                </div>
+                <!-- الصورة (Placeholder for uploaded image 1000064603.jpg) -->
+                <div class="md:w-1/2 flex justify-center md:justify-end">
+                    <!-- استخدام صورة placeholder بصرياً تشبه تصميم الصورة المرفقة -->
+                    <div class="w-full max-w-sm h-72 md:h-96 bg-secondary rounded-xl shadow-2xl relative overflow-hidden">
+                        <img src="https://placehold.co/400x500/00aaff/ffffff?text=صورة+طالب" alt="صورة طالب يدرس" class="w-full h-full object-cover opacity-75">
+                        <div class="absolute inset-0 bg-primary opacity-30"></div>
+                        <i class="fas fa-book-open text-white text-9xl absolute bottom-0 left-0 opacity-10"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. قسم الدورات (Courses Section) -->
+        <section id="courses" class="py-20 bg-background-color">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 border-b-4 border-accent-color inline-block mx-auto pb-2">
+                    دوراتنا المتميزة
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- بطاقة 1: دورة الإنجليزية الشاملة -->
+                    <div class="course-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                        <i class="fas fa-globe text-primary text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3">دورات اللغة الإنجليزية الشاملة</h3>
+                        <p class="text-gray-600 mb-4">تغطية متكاملة لجميع المستويات من المبتدئ إلى المتقدم، تركز على القراءة والكتابة والاستماع.</p>
+                        <div class="text-accent-color mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="text-primary hover:underline font-medium">عرض التفاصيل <i class="fas fa-arrow-left mr-1"></i></a>
+                    </div>
+
+                    <!-- بطاقة 2: المحادثة والنطق -->
+                    <div class="course-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                        <i class="fas fa-comments text-primary text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3">المحادثة والنطق (Speaking & Pronunciation)</h3>
+                        <p class="text-gray-600 mb-4">تطوير الطلاقة وتحسين النطق واللهجة عبر جلسات حية ومكثفة مع مدربين متخصصين.</p>
+                        <div class="text-accent-color mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="text-primary hover:underline font-medium">عرض التفاصيل <i class="fas fa-arrow-left mr-1"></i></a>
+                    </div>
+                    
+                    <!-- بطاقة 3: القواعد والترجمة -->
+                    <div class="course-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                        <i class="fas fa-book-open text-primary text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3">القواعد والترجمة الأكاديمية</h3>
+                        <p class="text-gray-600 mb-4">إتقان قواعد اللغة الإنجليزية الصعبة (Grammar) وتعلم تقنيات الترجمة الاحترافية.</p>
+                        <div class="text-accent-color mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="text-primary hover:underline font-medium">عرض التفاصيل <i class="fas fa-arrow-left mr-1"></i></a>
+                    </div>
+                    
+                    <!-- بطاقة 4: رخصة قيادة الحاسوب (إضافية) -->
+                    <div class="course-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                        <i class="fas fa-desktop text-primary text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3">رخصة قيادة الحاسوب (ICDL)</h3>
+                        <p class="text-gray-600 mb-4">دورة متخصصة لتعلم مهارات الحاسوب الأساسية الضرورية للعمل والدراسة.</p>
+                        <div class="text-accent-color mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="text-primary hover:underline font-medium">عرض التفاصيل <i class="fas fa-arrow-left mr-1"></i></a>
+                    </div>
+                    
+                    <!-- بطاقة 5: دورات إنجليزية للأطفال (من الصور المرفقة) -->
+                    <div class="course-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary">
+                        <i class="fas fa-child-reaching text-primary text-4xl mb-4"></i>
+                        <h3 class="text-2xl font-semibold mb-3">دورات إنجليزية للأطفال</h3>
+                        <p class="text-gray-600 mb-4">تعليم ممتع وتفاعلي للغة الإنجليزية للصغار، يركز على الألعاب والقصص لتنمية مهاراتهم.</p>
+                        <div class="text-accent-color mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="text-primary hover:underline font-medium">عرض التفاصيل <i class="fas fa-arrow-left mr-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. قسم نبذة عنا (About Section) -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 border-b-4 border-accent-color inline-block mx-auto pb-2">
+                    من نحن؟
+                </h2>
+                <div class="max-w-4xl mx-auto text-lg text-center leading-relaxed">
+                    <p class="mb-6">
+                        تأسست **أونلاين أكاديمي** بهدف تقديم تعليم عالي الجودة للغة الإنجليزية ومهارات الحاسوب الأساسية، وذلك بالاعتماد على نموذج التعليم عن بعد (أونلاين) بالكامل. نحن نؤمن بأن التعلم يجب أن يكون مرناً ومتاحاً للجميع، بغض النظر عن موقعهم الجغرافي.
+                    </p>
+                    <p class="mb-6">
+                        نحن نركز على تقديم محتوى متكامل يغطي جميع جوانب اللغة الإنجليزية: من **المحادثة** و**النطق** إلى **القواعد** و**الترجمة**، بالإضافة إلى دورات متخصصة مثل **رخصة قيادة الحاسوب (ICDL)**. جميع دوراتنا تُقدم عبر منصات تفاعلية مثل Zoom و WhatsApp لضمان أعلى مستويات المشاركة الفعالة.
+                    </p>
+                    <p class="text-primary font-semibold">
+                        مهمتنا هي تمكينك من الوصول إلى أهدافك التعليمية والمهنية. انضم إلينا اليوم وابنِ مستقبلك!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. قسم تواصل معنا (Contact Section) -->
+        <section id="contact" class="py-20 bg-background-color">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12 text-gray-900 border-b-4 border-accent-color inline-block mx-auto pb-2">
+                    تواصل معنا
+                </h2>
+                
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <!-- معلومات الاتصال (من الصور المرفقة) -->
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold text-primary mb-4">معلومات الاتصال</h3>
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <i class="fas fa-phone-alt text-secondary text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">رقم الهاتف (1):</p>
+                                    <p dir="ltr" class="text-gray-600">777 113 054</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <i class="fas fa-phone-alt text-secondary text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">رقم الهاتف (2):</p>
+                                    <p dir="ltr" class="text-gray-600">777 113 054</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <i class="fas fa-mobile-alt text-secondary text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">رقم جوال إضافي:</p>
+                                    <p dir="ltr" class="text-gray-600">735 169 906</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <i class="fab fa-whatsapp text-secondary text-2xl"></i>
+                                <div>
+                                    <p class="font-semibold">تواصل عبر واتساب:</p>
+                                    <a href="https://wa.me/967777113054" target="_blank" class="text-primary hover:underline" dir="ltr">+967 777 113 054</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- نموذج الاتصال -->
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary mb-4">أرسل لنا رسالة</h3>
+                            <form action="#" method="POST" class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">الاسم الكامل</label>
+                                    <input type="text" id="name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني</label>
+                                    <input type="email" id="email" name="email" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">رسالتك</label>
+                                    <textarea id="message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-lg shadow-sm p-3 focus:ring-primary focus:border-primary"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-secondary">
+                                    إرسال الرسالة
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- تذييل الصفحة (Footer) -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4">
+                <i class="fa-solid fa-graduation-cap text-primary text-2xl"></i>
+                <span class="text-xl font-bold ml-2">أونلاين أكاديمي</span>
+            </div>
+            <p class="text-gray-400 text-sm">
+                جميع الحقوق محفوظة &copy; 2025 Online Academy.
             </p>
-            
-            <button id="open-register-modal-hero" class="gold-bg hover:bg-yellow-500 text-gray-900 font-extrabold text-lg py-3 px-10 rounded-full transition duration-500 transform hover:scale-110 shadow-xl shadow-gold" 
-                    data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
-                سجّل الآن وابدأ رحلتك ✨
-            </button>
-        </div>
-    </section>
-
-    <section class="py-16 soft-gray-bg">
-        <div class="container mx-auto p-6">
-            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-down">
-                دوراتنا الأكثر تميزاً
-            </h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
-                     data-aos="fade-up" data-aos-delay="100">
-                    <img src="./assets/images/placeholder-english.jpg" alt="دورة اللغة الإنجليزية" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 gold-text">اللغة الإنجليزية الشاملة</h3>
-                        <p class="text-gray-600 mb-4 text-sm">من المبتدئ إلى الاحتراف. تطوير مهارات التحدث والاستماع والقواعد.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold">💰 500 SAR</span>
-                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
-                                شاهد التفاصيل
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
-                     data-aos="fade-up" data-aos-delay="200">
-                    <img src="./assets/images/placeholder-icdl.jpg" alt="دورة ICDL" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 gold-text">الرخصة الدولية (ICDL)</h3>
-                        <p class="text-gray-600 mb-4 text-sm">إتقان تطبيقات الأوفيس ومهارات الكمبيوتر الأساسية باحتراف.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold">💰 450 SAR</span>
-                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
-                                شاهد التفاصيل
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
-                     data-aos="fade-up" data-aos-delay="300">
-                    <img src="./assets/images/placeholder-translation.jpg" alt="دورة الترجمة" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2 gold-text">مبادئ الترجمة الاحترافية</h3>
-                        <p class="text-gray-600 mb-4 text-sm">تدريب عملي على الترجمة بين العربية والإنجليزية في مجالات متنوعة.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-lg font-bold">💰 600 SAR</span>
-                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
-                                شاهد التفاصيل
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-4 space-x-4 space-x-reverse">
+                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-gray-400 hover:text-primary transition"><i class="fab fa-instagram"></i></a>
             </div>
-        </div>
-    </section>
-
-    <section class="py-16 bg-white">
-        <div class="container mx-auto p-6">
-            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-down">
-                لماذا Online Academy؟
-            </h2>
-            <div class="grid md:grid-cols-4 gap-8 text-center">
-                <div class="p-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl gold-text mb-3">🎓</div>
-                    <h4 class="text-xl font-bold mb-2">أساتذة معتمدون</h4>
-                    <p class="text-gray-600 text-sm">فريق تعليمي بخبرات دولية واسعة ومؤهلات عالية.</p>
-                </div>
-                <div class="p-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-4xl gold-text mb-3">💻</div>
-                    <h4 class="text-xl font-bold mb-2">تعليم تفاعلي حديث</h4>
-                    <p class="text-gray-600 text-sm">منصات تعليمية متقدمة وموارد رقمية غنية.</p>
-                </div>
-                <div class="p-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="text-4xl gold-text mb-3">🏆</div>
-                    <h4 class="text-xl font-bold mb-2">شهادات معتمدة</h4>
-                    <p class="text-gray-600 text-sm">شهادات تفتح لك آفاق العمل محلياً وعالمياً.</p>
-                </div>
-                <div class="p-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-4xl gold-text mb-3">⏳</div>
-                    <h4 class="text-xl font-bold mb-2">مرونة في المواعيد</h4>
-                    <p class="text-gray-600 text-sm">دورات صباحية ومسائية تناسب جدولك المزدحم.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <h3 class="text-2xl font-extrabold gold-text mb-4">Online Academy</h3>
-                <p class="text-gray-400 text-sm">نلتزم بتقديم أرقى مستويات التعليم الرقمي لتمكين الأفراد من تحقيق أقصى إمكاناتهم.</p>
-            </div>
-            
-            <div>
-                <h4 class="text-lg font-bold mb-4 gold-text">روابط مهمة</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li><a href="about.html" class="hover:text-white transition duration-300">عن المعهد</a></li>
-                    <li><a href="courses.html" class="hover:text-white transition duration-300">جميع الدورات</a></li>
-                    <li><a href="contact.html" class="hover:text-white transition duration-300">اتصل بنا</a></li>
-                    <li><a href="#" class="hover:text-white transition duration-300">الأسئلة الشائعة</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="text-lg font-bold mb-4 gold-text">تواصل معنا</h4>
-                <ul class="space-y-2 text-gray-400 text-sm">
-                    <li>📞 +966 50 123 4567</li>
-                    <li>📧 info@onlineacademy.com</li>
-                    <li>📍 الرياض، المملكة العربية السعودية</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="text-lg font-bold mb-4 gold-text">النشرة البريدية</h4>
-                <form>
-                    <input type="email" placeholder="أدخل بريدك الإلكتروني" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600 focus:ring-gold-text focus:border-gold-text mb-2 text-sm">
-                    <button type="submit" class="w-full gold-bg hover:bg-yellow-500 text-gray-900 font-bold py-2 rounded transition duration-300 text-sm">
-                        اشترك
-                    </button>
-                </form>
-            </div>
-        </div>
-        <div class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-xs">
-            &copy; 2025 Online Academy. جميع الحقوق محفوظة.
         </div>
     </footer>
 
-    <a href="https://wa.me/966501234567" target="_blank" class="fixed bottom-6 left-6 z-50 p-3 bg-green-500 hover:bg-green-600 rounded-full text-white shadow-lg transition duration-300 transform hover:scale-110" aria-label="تواصل واتساب">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12.04 2.1c-5.46 0-9.9 4.44-9.9 9.9 0 1.77.46 3.45 1.35 4.96l-1.42 5.17 5.3-1.39c1.45.79 3.09 1.22 4.67 1.22 5.46 0 9.9-4.44 9.9-9.9s-4.44-9.9-9.9-9.9zm4.68 13.92c-.22.61-.83.65-1.12.55-.26-.08-.4-.14-.76-.32-.37-.18-1.13-.56-2.16-.96-.7-.27-1.17-.44-1.63-.56-.92-.23-1.85-.01-2.48.51-.57.47-1.44 1.37-1.68 1.49-.24.12-.46.18-.87.06-.41-.12-1.25-.46-2.42-1.5-.9-1.37-1.5-2.73-1.68-3.03-.18-.3-.02-.46.1-.64.12-.18.26-.35.4-.52.14-.17.3-.39.42-.57.12-.18.18-.34.26-.51.08-.18.04-.36-.02-.51-.06-.15-.4-.96-.54-1.32-.14-.36-.3-.31-.48-.31-.18 0-.38-.03-.58-.03-.2-.01-.54.06-.82.35-.28.3-.73.72-.73 1.77 0 1.05.75 2.06 1.05 2.46.3.4.74.83 1.5 1.41 1.06.84 2.16 1.48 3.03 1.83.27.1.48.16.65.2.22.06 1.35.39 2.15.34.8-.05 1.45-.44 1.67-.84.22-.4.22-.75.15-.84-.07-.09-.26-.14-.54-.27z"/>
-        </svg>
-    </a>
-    
-    <div id="register-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[100]">
-        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-lg w-full mx-4" data-aos="zoom-in">
-            <div class="flex justify-between items-center mb-6 border-b pb-3">
-                <h3 class="text-2xl font-bold gold-text">نموذج التسجيل السريع</h3>
-                <button id="close-register-modal" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
-            </div>
-            <form action="#" method="POST">
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
-                    <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
-                </div>
-                <div class="mb-4">
-                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الواتساب</label>
-                    <input type="tel" id="phone" name="phone" required class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
-                </div>
-                <div class="mb-6">
-                    <label for="course" class="block text-sm font-medium text-gray-700 mb-1">الدورة المهتم بها</label>
-                    <select id="course" name="course" class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
-                        <option value="">-- اختر دورة --</option>
-                        <option value="english">اللغة الإنجليزية الشاملة</option>
-                        <option value="icdl">الرخصة الدولية (ICDL)</option>
-                        <option value="translation">مبادئ الترجمة</option>
-                        <option value="other">أخرى</option>
-                    </select>
-                </div>
-                <button type="submit" class="w-full gold-bg hover:bg-yellow-500 text-gray-900 font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01]">
-                    إرسال طلب التسجيل
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- JavaScript للوظائف التفاعلية -->
     <script>
-        // تهيئة مكتبة AOS
-        AOS.init({
-            duration: 1200, // مدة الحركة
-            once: true,    // الحركة مرة واحدة عند التمرير
+        // دالة لتبديل عرض قائمة الجوال
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('max-h-0')) {
+                mobileMenu.classList.remove('max-h-0');
+                mobileMenu.classList.add('max-h-screen');
+            } else {
+                mobileMenu.classList.remove('max-h-screen');
+                mobileMenu.classList.add('max-h-0');
+            }
         });
 
-        // تشغيل النافذة المنبثقة (Modal) وقائمة الجوال
-        document.addEventListener('DOMContentLoaded', () => {
-            const modal = document.getElementById('register-modal');
-            const openBtns = document.querySelectorAll('#open-register-modal, #open-register-modal-hero');
-            const closeBtn = document.getElementById('close-register-modal');
-            const mobileMenuBtn = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            // وظيفة فتح/إغلاق المودال
-            openBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    modal.style.display = 'flex';
-                });
-            });
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-
-            // وظيفة قائمة الجوال
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        // إغلاق قائمة الجوال عند النقر على رابط
+        document.querySelectorAll('#mobileMenu a').forEach(item => {
+            item.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                mobileMenu.classList.remove('max-h-screen');
+                mobileMenu.classList.add('max-h-0');
             });
         });
+
+        // وظيفة وهمية لزر الترجمة
+        document.getElementById('translateBtn').addEventListener('click', function() {
+            alert('وظيفة الترجمة (Translation) قيد التطوير!');
+        });
+        
+        // منع السلوك الافتراضي لنموذج الاتصال (لأنه موقع HTML ثابت)
+        document.querySelector('#contact form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const messageBox = document.createElement('div');
+            messageBox.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div class="bg-white p-8 rounded-xl shadow-2xl max-w-sm w-full text-center">
+                        <i class="fas fa-check-circle text-primary text-5xl mb-4"></i>
+                        <p class="text-xl font-bold mb-2">تم الإرسال بنجاح!</p>
+                        <p class="text-gray-600 mb-6">شكراً لتواصلك معنا، سيتم الرد عليك في أقرب وقت ممكن.</p>
+                        <button id="closeMsg" class="btn-primary bg-primary text-white py-2 px-6 rounded-lg">إغلاق</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(messageBox);
+            
+            document.getElementById('closeMsg').addEventListener('click', function() {
+                document.body.removeChild(messageBox);
+                // تفريغ الحقول بعد الإرسال الوهمي
+                e.target.reset(); 
+            });
+        });
+
+        // لتجنب alert() استخدمنا رسالة مخصصة
+        function alert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.innerHTML = `
+                <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div class="bg-white p-6 rounded-xl shadow-2xl max-w-xs w-full text-center">
+                        <p class="text-lg font-semibold mb-4">${message}</p>
+                        <button id="closeAlert" class="btn-primary bg-gray-300 text-gray-800 py-2 px-6 rounded-lg">حسنًا</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(alertBox);
+            document.getElementById('closeAlert').addEventListener('click', function() {
+                document.body.removeChild(alertBox);
+            });
+        }
     </script>
-    
 </body>
-                        </html>
-    
+</html>
+
