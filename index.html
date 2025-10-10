@@ -1,276 +1,292 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محفظة عدسة النجوم للتصوير الفوتوغرافي</title>
-    <!-- تحميل Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="description" content="Online Academy - معهد رائد لتعليم اللغة الإنجليزية والترجمة والرخصة الدولية (ICDL). انضم الآن لمستقبل أفضل.">
+    <meta name="keywords" content="تعليم, لغة إنجليزية, ترجمة, ICDL, دورات, معهد, Online Academy">
+    <title>الرئيسية - Online Academy | اللغة الإنجليزية والترجمة</title>
+
+    <link href="./assets/css/style.css" rel="stylesheet"> 
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* تطبيق خط Inter (أو خط عربي مناسب) وخلفية داكنة */
-        body {
-            font-family: 'Inter', sans-serif; 
-            background-color: #0a0a0a;
-            color: #e5e7eb; /* نص رمادي فاتح للتباين */
-        }
-        /* أنماط مخصصة لشبكة المعرض المستجيبة للهاتف المحمول */
-        .gallery-grid {
-            display: grid;
-            gap: 1rem; /* 16px gap */
-            grid-template-columns: repeat(2, 1fr); /* عمودان على الهاتف المحمول */
-        }
-        @media (min-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 أعمدة على سطح المكتب/التابلت */
-            }
-        }
-        /* نمط للنافذة المنبثقة للصور (Lightbox Modal) */
-        .modal {
-            transition: opacity 0.3s ease;
-        }
-        .modal-content-container {
-            max-width: 90%;
-            max-height: 90vh;
-        }
-        .modal-img {
-            max-width: 100%;
-            max-height: 80vh; /* أقصى ارتفاع لترك مساحة للوصف */
-            object-fit: contain;
-        }
-        .hidden {
-            display: none;
-        }
+        body { font-family: 'Tajawal', sans-serif; }
+        .gold-bg { background-color: #FFD700; }
+        .gold-text { color: #FFD700; }
+        .soft-gray-bg { background-color: #F5F5F5; }
+        /* لتأثير كلاسيكي مودرن */
+        .shadow-gold { box-shadow: 0 4px 6px -1px rgba(255, 215, 0, 0.1), 0 2px 4px -1px rgba(255, 215, 0, 0.06); }
     </style>
 </head>
-<body class="antialiased" dir="rtl">
+<body class="text-gray-800">
 
-    <!-- الرأس والتنقل (Header & Navigation) -->
-    <header class="sticky top-0 z-40 bg-[#0a0a0a]/90 backdrop-blur-sm shadow-xl p-4 md:p-6 border-b border-gray-800">
-        <div class="container mx-auto flex justify-between items-center max-w-7xl">
-            <a href="#" class="text-2xl font-extrabold tracking-widest text-cyan-400 hover:text-cyan-300 transition duration-300">
-                عدسة النجوم
-            </a>
-            <nav class="hidden md:flex space-x-8 rtl:space-x-reverse">
-                <a href="#gallery" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">المعرض</a>
-                <a href="#about" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">حول</a>
-                <a href="#contact" class="text-lg font-medium text-gray-300 hover:text-white transition duration-200 p-2 rounded-lg">اتصل</a>
-            </nav>
-            <!-- زر قائمة الهاتف المحمول -->
-            <button class="md:hidden text-gray-300 hover:text-white transition duration-200 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+    <div class="soft-gray-bg hidden md:flex justify-between items-center py-2 px-6 text-sm">
+        <div class="flex items-center space-x-4 space-x-reverse">
+            <span class="gold-text font-bold">اتصل بنا: </span>
+            <span>📞 +966 50 123 4567</span>
         </div>
-    </header>
-
-    <main class="py-10 md:py-16">
-        <!-- قسم البطل (Hero Section) -->
-        <section class="text-center mb-16 px-4">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-500 leading-tight">
-                التقاط ما لا يُرى.
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
-                مجموعة منسقة من اللحظات في الزمن، من المناظر الطبيعية الخلابة إلى المشاعر الحضرية الخام.
-            </p>
-        </section>
-
-        <!-- قسم المعرض (Gallery Section) -->
-        <section id="gallery" class="container mx-auto px-4 max-w-7xl mb-16">
-            <h2 class="text-3xl font-bold mb-8 text-center text-white">المحفظة</h2>
-
-            <div class="gallery-grid">
-                <!-- صورة 1: منظر طبيعي -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="إطلالة جبلية عند غروب الشمس - سلسلة الطبيعة">
-                    <!-- استخدم صور Placeholder يمكنك استبدالها لاحقاً بصورك الخاصة -->
-                    <img src="https://placehold.co/800x600/1e40af/ffffff?text=Mountain+Vista" alt="إطلالة جبلية عند غروب الشمس" loading="lazy" class="w-full h-auto object-cover aspect-[4/3] rounded-xl" />
-                </div>
-
-                <!-- صورة 2: صورة شخصية -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-indigo-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="صورة استوديو أحادية اللون - العنصر البشري">
-                    <img src="https://placehold.co/600x900/4c4c4c/ffffff?text=Studio+Portrait" alt="صورة استوديو أحادية اللون" loading="lazy" class="w-full h-auto object-cover aspect-[2/3] rounded-xl" />
-                </div>
-
-                <!-- صورة 3: عمارة -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-violet-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="هندسة حضرية وانعكاسات - منظر المدينة">
-                    <img src="https://placehold.co/800x800/6d28d9/ffffff?text=Urban+Geometry" alt="هندسة حضرية وانعكاسات" loading="lazy" class="w-full h-auto object-cover aspect-square rounded-xl" />
-                </div>
-
-                <!-- صورة 4: تجريدي/تفاصيل -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-red-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="لقطة ماكرو لمعدن مصدأ - سلسلة التفاصيل">
-                    <img src="https://placehold.co/800x600/a30000/ffffff?text=Macro+Detail" alt="لقطة ماكرو لمعدن مصدأ" loading="lazy" class="w-full h-auto object-cover aspect-[4/3] rounded-xl" />
-                </div>
-
-                <!-- صورة 5: الحياة البرية -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-green-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="صورة ظلية لنسر أثناء الطيران - الحياة البرية">
-                    <img src="https://placehold.co/600x900/15803d/ffffff?text=Wildlife+Silhouette" alt="صورة ظلية لنسر أثناء الطيران" loading="lazy" class="w-full h-auto object-cover aspect-[2/3] rounded-xl" />
-                </div>
-
-                <!-- صورة 6: تصوير الشارع -->
-                <div class="gallery-item cursor-pointer overflow-hidden rounded-xl shadow-2xl hover:shadow-amber-500/50 transform hover:scale-[1.02] transition duration-300" data-caption="مشهد شارع مدينة ممطر - لحظات عفوية">
-                    <img src="https://placehold.co/800x800/ca8a04/ffffff?text=Street+Scene" alt="مشهد شارع مدينة ممطر" loading="lazy" class="w-full h-auto object-cover aspect-square rounded-xl" />
-                </div>
-                
-                <!-- يمكن إضافة المزيد من العناصر حسب الحاجة -->
-
-            </div>
-        </section>
-
-        <!-- قسم حول (About Section) -->
-        <section id="about" class="container mx-auto px-4 max-w-4xl py-16">
-            <h2 class="text-3xl font-bold mb-6 text-center text-white">ما وراء العدسة</h2>
-            <div class="bg-gray-900 p-8 rounded-2xl shadow-inner shadow-gray-700/50 space-y-4">
-                <p class="text-lg text-gray-300">
-                    مرحباً! أنا **أحمد المصور**، وأعتقد أن التصوير الفوتوغرافي هو فن الملاحظة. لقد كنت أصقل مهنتي لأكثر من عشر سنوات، متخصصاً في **تصوير المناظر الطبيعية** و **الصور الشخصية بالأبيض والأسود**.
-                </p>
-                <p class="text-lg text-gray-300">
-                    عملي مدفوع بالرغبة في تجميد اللحظات العابرة ومشاركة الجمال في العالم. مقري في **الرياض**، وأسافر على نطاق واسع بحثاً عن الإلهام. جميع المطبوعات متاحة للشراء—يرجى مراجعة قسم الاتصال للاستفسارات.
-                </p>
-                <div class="text-center pt-4">
-                    <a href="#contact" class="inline-block px-8 py-3 bg-cyan-600 text-white font-semibold rounded-full hover:bg-cyan-700 transition duration-300 shadow-lg shadow-cyan-500/50">
-                        تواصل معي
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم الاتصال (Contact Section) -->
-        <section id="contact" class="container mx-auto px-4 max-w-4xl py-16">
-            <h2 class="text-3xl font-bold mb-6 text-center text-white">اتصل والمطبوعات</h2>
-            <form class="bg-gray-900 p-8 rounded-2xl shadow-2xl shadow-indigo-500/30 space-y-6">
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-400 mb-1">الاسم</label>
-                    <!-- text-right يضمن محاذاة النص لليمين -->
-                    <input type="text" id="name" name="name" placeholder="اسمك" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-right" dir="auto">
-                </div>
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-400 mb-1">البريد الإلكتروني</label>
-                    <!-- dir="ltr" مفيد لإدخال البريد الإلكتروني بالإنجليزية -->
-                    <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-left" dir="ltr">
-                </div>
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-400 mb-1">الرسالة / استفسار عن طباعة</label>
-                    <textarea id="message" name="message" rows="4" placeholder="أنا مهتم بطباعة لمنظر غروب الشمس الجبلي..." class="w-full p-3 rounded-xl bg-gray-800 border border-gray-700 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 text-white transition duration-200 text-right" dir="auto"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition duration-300 shadow-xl shadow-indigo-500/50 transform hover:translate-y-[-2px]">
-                    أرسل الرسالة
-                </button>
-                <p id="contact-message" class="text-center text-green-400 hidden mt-4">شكراً لك على رسالتك! سأتواصل معك قريباً.</p>
-            </form>
-        </section>
-    </main>
-
-    <!-- التذييل (Footer) -->
-    <footer class="bg-gray-900 mt-16 py-8 border-t border-gray-800">
-        <div class="container mx-auto max-w-7xl px-4 text-center">
-            <p class="text-gray-500">&copy; 2025 عدسة النجوم للتصوير الفوتوغرافي. جميع الحقوق محفوظة.</p>
-            <div class="flex justify-center space-x-6 rtl:space-x-reverse mt-4">
-                <!-- أيقونات التواصل الاجتماعي -->
-                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">إنستغرام</a>
-                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">فيسبوك</a>
-                <a href="#" target="_blank" class="text-gray-400 hover:text-cyan-400 transition duration-200 text-lg">تويتر</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- النافذة المنبثقة للصور (Lightbox Modal) -->
-    <div id="lightbox-modal" class="modal fixed inset-0 bg-black bg-opacity-95 z-50 flex justify-center items-center hidden" onclick="closeModal(event)">
-        <div class="modal-content-container relative p-4" onclick="event.stopPropagation()">
-            <!-- زر الإغلاق على اليسار ليتناسب مع RTL -->
-            <button id="close-modal" class="absolute top-4 left-4 text-white text-3xl font-bold p-2 leading-none rounded-full bg-gray-800 hover:bg-gray-700 transition duration-200 focus:outline-none" aria-label="Close Modal">
-                &times;
-            </button>
-            <img id="lightbox-image" class="modal-img rounded-xl shadow-2xl" src="" alt="">
-            <p id="lightbox-caption" class="text-center text-lg mt-4 px-4 py-2 bg-gray-900 rounded-lg text-gray-300"></p>
+        <div>
+            <a href="#" class="text-gray-600 hover:gold-text transition duration-300 ml-3">English</a> | 
+            <a href="#" class="gold-text font-bold mr-3">العربية</a>
         </div>
     </div>
 
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <a href="index.html" class="text-2xl font-extrabold gold-text">Online Academy</a>
+            
+            <nav class="hidden md:flex space-x-6 space-x-reverse font-medium">
+                <a href="index.html" class="gold-text border-b-2 border-gold-text pb-1">الرئيسية</a>
+                <a href="about.html" class="hover:gold-text transition duration-300">عن المعهد</a>
+                <a href="courses.html" class="hover:gold-text transition duration-300">الدورات</a>
+                <a href="faculty.html" class="hover:gold-text transition duration-300">الأساتذة</a>
+                <a href="contact.html" class="hover:gold-text transition duration-300">التواصل</a>
+            </nav>
+
+            <button id="open-register-modal" class="gold-bg hover:bg-yellow-500 text-white font-bold py-2 px-6 rounded-full transition duration-300 shadow-gold transform hover:scale-105">
+                انضم الآن
+            </button>
+            
+            <button id="mobile-menu-button" class="md:hidden text-2xl gold-text">☰</button>
+        </div>
+        
+        <nav id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-md">
+            <a href="index.html" class="block py-2 px-4 hover:soft-gray-bg gold-text border-r-4 border-gold-text">الرئيسية</a>
+            <a href="about.html" class="block py-2 px-4 hover:soft-gray-bg">عن المعهد</a>
+            <a href="courses.html" class="block py-2 px-4 hover:soft-gray-bg">الدورات</a>
+            <a href="faculty.html" class="block py-2 px-4 hover:soft-gray-bg">الأساتذة</a>
+            <a href="contact.html" class="block py-2 px-4 hover:soft-gray-bg">التواصل</a>
+        </nav>
+    </header>
+
+    <section class="relative h-screen flex items-center bg-cover bg-center" 
+             style="background-image: url('./assets/images/hero-bg.jpg');">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        
+        <div class="container mx-auto text-white text-center relative z-10 p-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 gold-text" 
+                data-aos="fade-up" data-aos-duration="1000">
+                مستقبلك يبدأ هنا!
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto" 
+               data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                أكاديمية رائدة لتعليم اللغة الإنجليزية، الترجمة، والرخصة الدولية (ICDL). تعلم بذكاء، وحقق أحلامك.
+            </p>
+            
+            <button id="open-register-modal-hero" class="gold-bg hover:bg-yellow-500 text-gray-900 font-extrabold text-lg py-3 px-10 rounded-full transition duration-500 transform hover:scale-110 shadow-xl shadow-gold" 
+                    data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
+                سجّل الآن وابدأ رحلتك ✨
+            </button>
+        </div>
+    </section>
+
+    <section class="py-16 soft-gray-bg">
+        <div class="container mx-auto p-6">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-down">
+                دوراتنا الأكثر تميزاً
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
+                     data-aos="fade-up" data-aos-delay="100">
+                    <img src="./assets/images/placeholder-english.jpg" alt="دورة اللغة الإنجليزية" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 gold-text">اللغة الإنجليزية الشاملة</h3>
+                        <p class="text-gray-600 mb-4 text-sm">من المبتدئ إلى الاحتراف. تطوير مهارات التحدث والاستماع والقواعد.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">💰 500 SAR</span>
+                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
+                                شاهد التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
+                     data-aos="fade-up" data-aos-delay="200">
+                    <img src="./assets/images/placeholder-icdl.jpg" alt="دورة ICDL" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 gold-text">الرخصة الدولية (ICDL)</h3>
+                        <p class="text-gray-600 mb-4 text-sm">إتقان تطبيقات الأوفيس ومهارات الكمبيوتر الأساسية باحتراف.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">💰 450 SAR</span>
+                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
+                                شاهد التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition duration-500 transform hover:-translate-y-1"
+                     data-aos="fade-up" data-aos-delay="300">
+                    <img src="./assets/images/placeholder-translation.jpg" alt="دورة الترجمة" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 gold-text">مبادئ الترجمة الاحترافية</h3>
+                        <p class="text-gray-600 mb-4 text-sm">تدريب عملي على الترجمة بين العربية والإنجليزية في مجالات متنوعة.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold">💰 600 SAR</span>
+                            <a href="#" class="gold-bg hover:bg-yellow-500 text-gray-900 py-2 px-4 rounded-full text-sm font-bold transition duration-300">
+                                شاهد التفاصيل
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto p-6">
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-down">
+                لماذا Online Academy؟
+            </h2>
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="p-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl gold-text mb-3">🎓</div>
+                    <h4 class="text-xl font-bold mb-2">أساتذة معتمدون</h4>
+                    <p class="text-gray-600 text-sm">فريق تعليمي بخبرات دولية واسعة ومؤهلات عالية.</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl gold-text mb-3">💻</div>
+                    <h4 class="text-xl font-bold mb-2">تعليم تفاعلي حديث</h4>
+                    <p class="text-gray-600 text-sm">منصات تعليمية متقدمة وموارد رقمية غنية.</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl gold-text mb-3">🏆</div>
+                    <h4 class="text-xl font-bold mb-2">شهادات معتمدة</h4>
+                    <p class="text-gray-600 text-sm">شهادات تفتح لك آفاق العمل محلياً وعالمياً.</p>
+                </div>
+                <div class="p-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl gold-text mb-3">⏳</div>
+                    <h4 class="text-xl font-bold mb-2">مرونة في المواعيد</h4>
+                    <p class="text-gray-600 text-sm">دورات صباحية ومسائية تناسب جدولك المزدحم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-extrabold gold-text mb-4">Online Academy</h3>
+                <p class="text-gray-400 text-sm">نلتزم بتقديم أرقى مستويات التعليم الرقمي لتمكين الأفراد من تحقيق أقصى إمكاناتهم.</p>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-4 gold-text">روابط مهمة</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li><a href="about.html" class="hover:text-white transition duration-300">عن المعهد</a></li>
+                    <li><a href="courses.html" class="hover:text-white transition duration-300">جميع الدورات</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition duration-300">اتصل بنا</a></li>
+                    <li><a href="#" class="hover:text-white transition duration-300">الأسئلة الشائعة</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-4 gold-text">تواصل معنا</h4>
+                <ul class="space-y-2 text-gray-400 text-sm">
+                    <li>📞 +966 50 123 4567</li>
+                    <li>📧 info@onlineacademy.com</li>
+                    <li>📍 الرياض، المملكة العربية السعودية</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-4 gold-text">النشرة البريدية</h4>
+                <form>
+                    <input type="email" placeholder="أدخل بريدك الإلكتروني" class="w-full p-2 rounded bg-gray-700 text-white border border-gray-600 focus:ring-gold-text focus:border-gold-text mb-2 text-sm">
+                    <button type="submit" class="w-full gold-bg hover:bg-yellow-500 text-gray-900 font-bold py-2 rounded transition duration-300 text-sm">
+                        اشترك
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-xs">
+            &copy; 2025 Online Academy. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/966501234567" target="_blank" class="fixed bottom-6 left-6 z-50 p-3 bg-green-500 hover:bg-green-600 rounded-full text-white shadow-lg transition duration-300 transform hover:scale-110" aria-label="تواصل واتساب">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.04 2.1c-5.46 0-9.9 4.44-9.9 9.9 0 1.77.46 3.45 1.35 4.96l-1.42 5.17 5.3-1.39c1.45.79 3.09 1.22 4.67 1.22 5.46 0 9.9-4.44 9.9-9.9s-4.44-9.9-9.9-9.9zm4.68 13.92c-.22.61-.83.65-1.12.55-.26-.08-.4-.14-.76-.32-.37-.18-1.13-.56-2.16-.96-.7-.27-1.17-.44-1.63-.56-.92-.23-1.85-.01-2.48.51-.57.47-1.44 1.37-1.68 1.49-.24.12-.46.18-.87.06-.41-.12-1.25-.46-2.42-1.5-.9-1.37-1.5-2.73-1.68-3.03-.18-.3-.02-.46.1-.64.12-.18.26-.35.4-.52.14-.17.3-.39.42-.57.12-.18.18-.34.26-.51.08-.18.04-.36-.02-.51-.06-.15-.4-.96-.54-1.32-.14-.36-.3-.31-.48-.31-.18 0-.38-.03-.58-.03-.2-.01-.54.06-.82.35-.28.3-.73.72-.73 1.77 0 1.05.75 2.06 1.05 2.46.3.4.74.83 1.5 1.41 1.06.84 2.16 1.48 3.03 1.83.27.1.48.16.65.2.22.06 1.35.39 2.15.34.8-.05 1.45-.44 1.67-.84.22-.4.22-.75.15-.84-.07-.09-.26-.14-.54-.27z"/>
+        </svg>
+    </a>
+    
+    <div id="register-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[100]">
+        <div class="bg-white rounded-lg shadow-2xl p-8 max-w-lg w-full mx-4" data-aos="zoom-in">
+            <div class="flex justify-between items-center mb-6 border-b pb-3">
+                <h3 class="text-2xl font-bold gold-text">نموذج التسجيل السريع</h3>
+                <button id="close-register-modal" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            <form action="#" method="POST">
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
+                    <input type="text" id="name" name="name" required class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
+                </div>
+                <div class="mb-4">
+                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الواتساب</label>
+                    <input type="tel" id="phone" name="phone" required class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
+                </div>
+                <div class="mb-6">
+                    <label for="course" class="block text-sm font-medium text-gray-700 mb-1">الدورة المهتم بها</label>
+                    <select id="course" name="course" class="w-full p-3 border border-gray-300 rounded focus:ring-gold-text focus:border-gold-text">
+                        <option value="">-- اختر دورة --</option>
+                        <option value="english">اللغة الإنجليزية الشاملة</option>
+                        <option value="icdl">الرخصة الدولية (ICDL)</option>
+                        <option value="translation">مبادئ الترجمة</option>
+                        <option value="other">أخرى</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full gold-bg hover:bg-yellow-500 text-gray-900 font-bold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01]">
+                    إرسال طلب التسجيل
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // --- JavaScript for Lightbox and Form Handling ---
+        // تهيئة مكتبة AOS
+        AOS.init({
+            duration: 1200, // مدة الحركة
+            once: true,    // الحركة مرة واحدة عند التمرير
+        });
 
-        const modal = document.getElementById('lightbox-modal');
-        const lightboxImage = document.getElementById('lightbox-image');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-        const closeModalButton = document.getElementById('close-modal');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        // تشغيل النافذة المنبثقة (Modal) وقائمة الجوال
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('register-modal');
+            const openBtns = document.querySelectorAll('#open-register-modal, #open-register-modal-hero');
+            const closeBtn = document.getElementById('close-register-modal');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        // Function to open the modal/lightbox
-        function openModal(imageSrc, captionText) {
-            lightboxImage.src = imageSrc;
-            lightboxImage.alt = captionText;
-            lightboxCaption.textContent = captionText;
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling the body when modal is open
-        }
+            // وظيفة فتح/إغلاق المودال
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modal.style.display = 'flex';
+                });
+            });
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
 
-        // Function to close the modal/lightbox
-        function closeModal(event) {
-            // Check if the click was on the modal background or the close button
-            if (event.target === modal || event.target === closeModalButton) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = ''; // Restore body scrolling
-            }
-        }
-
-        // Attach click listeners to all gallery items
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                const src = img.src;
-                const caption = item.getAttribute('data-caption');
-                openModal(src, caption);
+            // وظيفة قائمة الجوال
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
         });
-
-        // Event listener for the close button
-        closeModalButton.addEventListener('click', (event) => {
-            closeModal(event);
-        });
-
-        // Event listener for closing modal with ESC key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
-                // Manually trigger the close function as if the close button was clicked
-                closeModal({ target: closeModalButton });
-            }
-        });
-
-
-        // Basic form submission handler (prevents page refresh)
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const messageElement = document.getElementById('contact-message');
-
-            // Simple validation check
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-                // In a real application, you would send this data to a server here.
-                console.log('Form Submitted:', { name, email, message });
-
-                // Display success message
-                messageElement.textContent = "شكراً لك على رسالتك! سأتواصل معك قريباً.";
-                messageElement.classList.remove('hidden');
-                messageElement.classList.remove('text-red-400');
-                messageElement.classList.add('text-green-400');
-                
-                // Clear form after a short delay
-                setTimeout(() => {
-                    e.target.reset();
-                    messageElement.classList.add('hidden');
-                }, 3000);
-
-            } else {
-                 messageElement.textContent = "يرجى ملء جميع الحقول.";
-                 messageElement.classList.remove('hidden');
-                 messageElement.classList.remove('text-green-400');
-                 messageElement.classList.add('text-red-400');
-            }
-        });
     </script>
+    
 </body>
-</html>
-
-  
+                        </html>
+    
