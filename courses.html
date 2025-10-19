@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أونلاين أكاديمي - الدورات</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* ليتماشى مع RTL */
+            padding: 30px;
+            border-bottom: 5px solid var(--primary-color);
+        }
+        .course-card h4 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .course-card p {
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        .course-card i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="1000066660.webp" alt="شعار أونلاين أكاديمي"> 
+            <h1>أونلاين أكاديمي</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" data-lang-key="home">الرئيسية</a></li>
+                <li><a href="courses.html" class="active" data-lang-key="courses">الدورات</a></li>
+                <li><a href="about.html" data-lang-key="about">نبذة عنا</a></li>
+                <li><a href="contact.html" data-lang-key="contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <button id="lang-toggle" class="btn translate-btn" data-lang="en">English</button>
+            <a href="https://wa.me/967777113054" target="_blank" class="btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> <span data-lang-key="contact_now">تواصل الآن</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="courses-section">
+        <div class="container">
+            <h2 class="section-title" data-lang-key="page_courses_title">جميع الدورات عبر الإنترنت</h2>
+            
+            <div class="course-grid">
+                
+                <div class="card course-card">
+                    <i class="fas fa-star"></i>
+                    <h4 data-lang-key="course_english_general">دورات لغة إنجليزية شاملة</h4>
+                    <p data-lang-key="course_desc_general">من الصفر إلى الاحتراف في جميع المهارات اللغوية.</p>
+                </div>
+
+                <div class="card course-card">
+                    <i class="fas fa-language"></i>
+                    <h4 data-lang-key="course_translation">دورات ترجمة متخصصة</h4>
+                    <p data-lang-key="course_desc_translation">تعلم أساليب الترجمة الاحترافية بين العربية والإنجليزية.</p>
+                </div>
+
+                <div class="card course-card">
+                    <i class="fas fa-comments"></i>
+                    <h4 data-lang-key="course_speaking">دورات المحادثة والتفاعل</h4>
+                    <p data-lang-key="course_desc_speaking">طور طلاقتك وثقتك في التحدث بمواضيع متنوعة.</p>
+                </div>
+
+                <div class="card course-card">
+                    <i class="fas fa-volume-up"></i>
+                    <h4 data-lang-key="course_pronunciation">دورات النطق والأصوات (Phonetics)</h4>
+                    <p data-lang-key="course_desc_pronunciation">أتقن مخارج الحروف واللهجات الإنجليزية.</p>
+                </div>
+
+                <div class="card course-card">
+                    <i class="fas fa-child"></i>
+                    <h4 data-lang-key="course_kids">دورات لغة إنجليزية للأطفال</h4>
+                    <p data-lang-key="course_desc_kids">مناهج ممتعة وتفاعلية تناسب الأعمار الصغيرة.</p>
+                </div>
+
+                <div class="card course-card">
+                    <i class="fas fa-desktop"></i>
+                    <h4 data-lang-key="course_icdl">الرخصة الدولية لقيادة الحاسوب (ICDL)</h4>
+                    <p data-lang-key="course_desc_icdl">احصل على الشهادة الدولية لقيادة الحاسوب.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <footer class="main-footer">
+        <p data-lang-key="footer_copyright">&copy; 2025 أونلاين أكاديمي. جميع الحقوق محفوظة.</p>
+        <div class="contact-info">
+            <span data-lang-key="call_us">اتصل بنا:</span>
+            <a href="tel:+967777113054">777 113 054</a> | 
+            <a href="tel:+967735169906">735 169 906</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
